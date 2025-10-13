@@ -25,7 +25,7 @@ jobs:
         with:
           context: .
           push: false
-          tags: ${{ github.repository }}:latest
+          tags: llnl/apbuilder:latest
   build-and-push-container-image:
     runs-on: ubuntu-latest
     needs: build-container-image
@@ -46,4 +46,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ github.repository }}:${{ github.ref_name }}
+          tags: ghcr.io/llnl/apbuilder:${{ github.ref_name }}
