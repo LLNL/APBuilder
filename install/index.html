@@ -206,21 +206,20 @@ This instructions are written using docker.</p>
 <p>In the <code>volume-overrides.yaml</code> change the following:</p>
 <ol>
 <li><code>&lt;data-source&gt;</code> to the full root path of where you want to store the data. A <code>data</code> and <code>output</code> directory will be automatically created in this root path.</li>
-<li><code>&lt;cacert-source&gt;</code> to the full path where your ca-certificate PEM file is located to allow SSL.</li>
 </ol>
 <h3 id="verify_1">Verify<a class="headerlink" href="#verify_1" title="Permanent link">#</a></h3>
 <p>Run the following command to verify installation and configuration.<br />
 It should print the apbuilder help message.<br />
 NOTE: The first time it will take a little while because it will download the container image.</p>
 <pre><code class="language-bash">docker compose \
-  -f apbuilder-local-docker-compose.yaml \
+  -f apbuilder-docker-compose.yaml \
   -f volume-overrides.yaml run \
   --rm apbuilder
 </code></pre>
 <h3 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">#</a></h3>
 <p>You can run with docker compose using the following command:</p>
 <pre><code class="language-bash">docker compose \
-  -f apbuilder-local-docker-compose.yaml \
+  -f apbuilder-docker-compose.yaml \
   -f volume-overrides.yaml run \
   --rm apbuilder \
   apbuilder info --selfcheck
@@ -230,14 +229,14 @@ which you can change to execute any apbuilder command.</p>
 <p>For example, try replacing it with <code>info -h</code></p>
 <p>The following prefix is always needed to run apbuilder with docker compose.</p>
 <pre><code class="language-bash">docker compose \
-  -f apbuilder-local-docker-compose.yaml \
+  -f apbuilder-docker-compose.yaml \
   -f volume-overrides.yaml \
   run --rm apbuilder
 </code></pre>
 <p>It is recommended to to create an alias to simplify usage:</p>
 <pre><code class="language-bash">alias apbuilder='
   docker compose \
-  -f apbuilder-local-docker-compose.yaml \
+  -f apbuilder-docker-compose.yaml \
   -f volume-overrides.yaml \
   run --rm apbuilder apbuilder'
 </code></pre>
