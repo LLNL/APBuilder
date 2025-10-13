@@ -8,7 +8,8 @@ AC2Dr is a 2-D numerical solver for the acoustic wave equation using the finite 
 
 ## License
 
-See LICENSE and NOTICE files for details.
+See [LICENSE](https://github.com/LLNL/APBuilder/blob/main/LICENSE) and
+[NOTICE](https://github.com/LLNL/APBuilder/blob/main/NOTICE) files for details.
 
 ```text
 LLNL-CODE-2012226

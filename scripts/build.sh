@@ -7,7 +7,6 @@ GITLAB_TOKEN_FILENAME="secrets/token.txt"
 GITLAB_TOKEN=$(head -n 1 $GITLAB_TOKEN_FILENAME)
 export GITLAB_TOKEN
 
-CERT="secrets/cacert.pem"
 COMMIT_HASH=$(git log -1 --pretty=format:"%H")
 
 echo "Building version $VERSION ..."
@@ -19,7 +18,6 @@ docker build --rm -f $DOCKERFILE \
     --build-arg VERSION=$VERSION \
     --build-arg username=__token__ \
     --secret id=build_token,env=GITLAB_TOKEN \
-    --secret id=cert,src=$CERT \
     -t llnl/apbuilder:$VERSION .
     
 

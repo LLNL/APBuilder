@@ -42,7 +42,7 @@
 
     {% if config.extra.doc_number %}
     <tr>
-        <td>Document Number</td>
+        <td>LLNL Release Number</td>
         <td>{{ config.extra.doc_number }}</td>
     </tr>
     {% endif %}
@@ -58,6 +58,13 @@
     <tr>
         <td>Document Last Updated</td>
         <td>{{ config.extra.doc_last_updated }}</td>
+    </tr>
+    {% endif %}
+
+    {% if config.extra.doi %}
+    <tr>
+        <td>DOI</td>
+        <td>{{ config.extra.doi }}</td>
     </tr>
     {% endif %}
 
