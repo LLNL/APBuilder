@@ -72,8 +72,6 @@ RUN python3 -m pip install /home/${USER}/dist/*.whl && \
 WORKDIR /home/${USER}
 COPY --chown=${USER} src/apbuilder/config/config.toml .config/herbie/config.toml
 RUN mkdir -p logs && touch logs/.ignore
-RUN touch cacert.pem
-ENV REQUESTS_CA_BUNDLE=/home/${USER}/cacert.pem
 
 # Unfortunately, ENTRYPOINT command does not support use of ARG or ENV variables directly,
 # hence the name of the virtual environment is hardcoded here. 
