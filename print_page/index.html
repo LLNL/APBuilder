@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Raul Viera-Mercado, Keehoon Kim">
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Atmospheric Profile Builder</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" disabled>
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../styles/print-site.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    
+        <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            remove_material_navigation();remove_mkdocs_theme_navigation();generate_toc();
+        })
+        </script>
+        </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Atmospheric Profile Builder</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../install/" class="nav-link">Install</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../usage/" class="nav-link">Usage</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../how-it-works/" class="nav-link">How It Works</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../about/" class="nav-link">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../faqs/" class="nav-link">FAQ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../development/" class="nav-link">Development</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+    
+    
+
+
+                            <li class="nav-item dropdown">
+                              <button id="theme-menu" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme" class="nav-link dropdown-toggle">
+                                <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                <span class="d-lg-none ms-2">Toggle theme</span>
+                              </button>
+                              <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                                    <i class="fa-solid fa-sun fa-fw"></i>
+                                    <span class="ms-2">Light</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                                    <i class="fa-solid fa-moon fa-fw"></i>
+                                    <span class="ms-2">Dark</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="true">
+                                    <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                    <span class="ms-2">Auto</span>
+                                    <i class="fa-solid fa-check ms-auto"></i>
+                                  </button>
+                                </li>
+                              </ul>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="../js/darkmode.js"></script>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="0"><a href="#index" class="nav-link">1 Home</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="0"><a href="#install" class="nav-link">2 Install</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="0"><a href="#usage" class="nav-link">3 Usage</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="0"><a href="#how-it-works" class="nav-link">4 How It Works</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="0"><a href="#about" class="nav-link">5 About</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="0"><a href="#faqs" class="nav-link">6 FAQ</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<div id="print-site-page" class="print-site-enumerate-headings print-site-enumerate-figures">
+        <section id="print-site-cover-page">
+            
+<div>
+
+    
+        <h1>Atmospheric Profile Builder</h1>
+    
+
+</div>
+
+
+<table>
+
+    
+    <tr>
+        <td>Description</td>
+        <td>APBuilder User Guide</td>
+    </tr>
+    
+
+    
+    <tr>
+        <td>Author(s)</td>
+        <td>Raul Viera-Mercado, Keehoon Kim</td>
+    </tr>
+    
+
+    
+
+    
+
+
+
+    
+    <tr>
+        <td>Document Number</td>
+        <td>LLNL-CODE-2012226</td>
+    </tr>
+    
+
+    
+    <tr>
+        <td>Software Version</td>
+        <td>1.0.0</td>
+    </tr>
+    
+
+    
+    <tr>
+        <td>Document Last Updated</td>
+        <td>October 06, 2025</td>
+    </tr>
+    
+
+</table>
+
+
+
+
+        </section>
+        
+        <section class="print-page">
+            <div id="print-page-toc" data-toc-depth="6">
+                <nav role='navigation' class='print-page-toc-nav'>
+                <h1 class='print-page-toc-title'>Table of Contents</h1>
+                </nav>
+            </div>
+        </section>
+        <section class="print-page" id="index" heading-number="1"><h1 id="index-atmospheric-profile-builder-apbuilder">Atmospheric Profile Builder (APBuilder)<a class="headerlink" href="#index-atmospheric-profile-builder-apbuilder" title="Permanent link">#</a></h1>
+<p>The APBuilder is a tool to create <a href="https://github.com/LLNL/AC2Dr">AC2Dr</a> atmosphere profiles by
+downloading a weather model and making transformations to generate the 1D or 2D binary profile.
+The binary profile is used as an input to AC2Dr.</p>
+<p>To install APBuilder, please <a href="#install">visit this page</a>.</p></section><section class="print-page" id="install" heading-number="2"><h1 id="install-installing-apbuilder">Installing APBuilder<a class="headerlink" href="#install-installing-apbuilder" title="Permanent link">#</a></h1>
+<!-- markdownlint-disable MD024 -->
+
+<p>If you are looking to upgrade apbuilder, you can skip to the <a href="#install-upgrade">Upgrade</a> section.</p>
+<h2 id="install-types-of-installation">Types of Installation<a class="headerlink" href="#install-types-of-installation" title="Permanent link">#</a></h2>
+<p>There are 2 ways to install the application.</p>
+<ol>
+<li><a href="#install-native-install">Native install</a> using conda</li>
+<li><a href="#install-container-install">Container install</a></li>
+</ol>
+<h2 id="install-native-install">Native Install<a class="headerlink" href="#install-native-install" title="Permanent link">#</a></h2>
+<h3 id="install-pre-requisites">Pre-requisites<a class="headerlink" href="#install-pre-requisites" title="Permanent link">#</a></h3>
+<p>Create conda virtual environment</p>
+<pre><code class="language-bash">conda create -y --name apbuilder python=3.11
+conda activate apbuilder
+</code></pre>
+<p>Before installing the tool, <code>PyGMT</code> must be install in the system.</p>
+<pre><code class="language-bash">conda install -y -c conda-forge 'pygmt=0.12' libgdal-grib libgdal-netcdf
+</code></pre>
+<h3 id="install-installation">Installation<a class="headerlink" href="#install-installation" title="Permanent link">#</a></h3>
+<p>Install the Python application, including all dependencies, using the following command:</p>
+<pre><code class="language-bash">pip install apbuilder
+</code></pre>
+<h3 id="install-verify">Verify<a class="headerlink" href="#install-verify" title="Permanent link">#</a></h3>
+<p>You can run a selfcheck to make sure there are no errors with 3rd party dependencies.</p>
+<pre><code class="language-bash">apbuilder info --selfcheck
+</code></pre>
+<h2 id="install-container-install">Container Install<a class="headerlink" href="#install-container-install" title="Permanent link">#</a></h2>
+<p>APBuilder can be run as a container. We provide a docker compose file for ease of use.<br />
+You can follow the steps below to configure and run the container.</p>
+<h3 id="install-pre-requisites_1">Pre-requisites<a class="headerlink" href="#install-pre-requisites_1" title="Permanent link">#</a></h3>
+<p>To install the container image, you will need a container runtime, for example Docker or Podman.<br />
+This instructions are written using docker.</p>
+<h3 id="install-download">Download<a class="headerlink" href="#install-download" title="Permanent link">#</a></h3>
+<p>Download the docker compose and volume override files.</p>
+<ol>
+<li>Docker Compose</li>
+<li>Volume Override</li>
+</ol>
+<h3 id="install-configure">Configure<a class="headerlink" href="#install-configure" title="Permanent link">#</a></h3>
+<p>In the <code>volume-overrides.yaml</code> change the following:</p>
+<ol>
+<li><code>&lt;data-source&gt;</code> to the full root path of where you want to store the data. A <code>data</code> and <code>output</code> directory will be automatically created in this root path.</li>
+<li><code>&lt;cacert-source&gt;</code> to the full path where your ca-certificate PEM file is located to allow SSL.</li>
+</ol>
+<h3 id="install-verify_1">Verify<a class="headerlink" href="#install-verify_1" title="Permanent link">#</a></h3>
+<p>Run the following command to verify installation and configuration.<br />
+It should print the apbuilder help message.<br />
+NOTE: The first time it will take a little while because it will download the container image.</p>
+<pre><code class="language-bash">docker compose \
+  -f apbuilder-local-docker-compose.yaml \
+  -f volume-overrides.yaml run \
+  --rm apbuilder
+</code></pre>
+<h3 id="install-usage">Usage<a class="headerlink" href="#install-usage" title="Permanent link">#</a></h3>
+<p>You can run with docker compose using the following command:</p>
+<pre><code class="language-bash">docker compose \
+  -f apbuilder-local-docker-compose.yaml \
+  -f volume-overrides.yaml run \
+  --rm apbuilder \
+  apbuilder info --selfcheck
+</code></pre>
+<p>The actual command we are telling the container to execute is <code>apbuilder info --selfcheck</code>,
+which you can change to execute any apbuilder command.</p>
+<p>For example, try replacing it with <code>info -h</code></p>
+<p>The following prefix is always needed to run apbuilder with docker compose.</p>
+<pre><code class="language-bash">docker compose \
+  -f apbuilder-local-docker-compose.yaml \
+  -f volume-overrides.yaml \
+  run --rm apbuilder
+</code></pre>
+<p>It is recommended to to create an alias to simplify usage:</p>
+<pre><code class="language-bash">alias apbuilder='
+  docker compose \
+  -f apbuilder-local-docker-compose.yaml \
+  -f volume-overrides.yaml \
+  run --rm apbuilder apbuilder'
+</code></pre>
+<p>NOTE: The word apbuilder is mentioned twice at the end of the command. This is not a mistake.<br />
+The first instance is the name of the container. The seconds instance is the command we are executing inside the container.</p>
+<p>Then you can easily run with:</p>
+<pre><code class="language-bash">apbuilder info -h
+</code></pre>
+<p>To learn more on how to use apbuilder, please visit the <a href="#usage">Using APBuilder page</a>.</p>
+<h2 id="install-upgrade">Upgrade<a class="headerlink" href="#install-upgrade" title="Permanent link">#</a></h2>
+<p>To upgrade APBuilder along with herbie-data, use the following command.
+Note this will not update transitive dependencies. It will only update the explicit dependencies in APBuilder.</p>
+<pre><code class="language-bash">pip install apbuilder --upgrade
+</code></pre></section><section class="print-page" id="usage" heading-number="3"><h1 id="usage-using-apbuilder">Using APBuilder<a class="headerlink" href="#usage-using-apbuilder" title="Permanent link">#</a></h1>
+<h2 id="usage-validate-installation">Validate Installation<a class="headerlink" href="#usage-validate-installation" title="Permanent link">#</a></h2>
+<p>You can run a selfcheck to make sure there are no errors with 3rd party dependencies.<br />
+No errors should be reported. If there is any error, please double check you installed
+everything correctly.</p>
+<pre><code class="language-bash">apbuilder info --selfcheck
+</code></pre>
+<h2 id="usage-test-run">Test Run<a class="headerlink" href="#usage-test-run" title="Permanent link">#</a></h2>
+<p>You can run a basic 1D profile build with the following command:</p>
+<pre><code class="language-bash">apbuilder build1d 20240601 37.1149 243.9309 38.1149 244.9309
+</code></pre>
+<p>Here is the command to test a 2D profile build:</p>
+<pre><code class="language-bash">apbuilder build2d 20160815 48.3200 16.8700 47.9183 19.8908 0.5
+</code></pre>
+<h2 id="usage-usage">Usage<a class="headerlink" href="#usage-usage" title="Permanent link">#</a></h2>
+<p><strong>If NCEI source does not work on VPN, please disconnect VPN and try again.</strong></p>
+<pre><code class="language-bash">$ apbuilder --help
+usage: apbuilder [-h] [-v] {build1d,build2d,info} ...
+
+Atmospheric Profile Builder (APBuilder)
+
+positional arguments:
+  {build1d,build2d,info}
+    build1d             build 1D profiles
+    build2d             build 2D profiles
+    info                additional information
+
+options:
+  -h, --help            show this help message and exit
+  -v, --version         show program's version number and exit
+
+LLNL
+</code></pre>
+<pre><code class="language-bash">$ apbuilder build1d --help
+usage: apbuilder build1d [-h] [-wm {GFS,HRRR,IFS,RAP,ERA5}] [-e] [-nd]
+                         [-c {model,forecast,forecast-only}] [-lf filename] [-out out_dir]
+                         [-data data_dir] [-pof prefix] [-clim min max] [-dlim min max]
+                         [-wlim min max]
+                         datetime [-90, 90] [-180, 360] [-90, 90] [-180, 360]
+
+positional arguments:
+  datetime              date of data in ISO 8601 or epoch format
+  [-90, 90]             latitude of the profile
+  [-180, 360]           longitude of the profile
+  [-90, 90]             latitude of the point to which direction the wind speed is calculated
+  [-180, 360]           longitude of the point to which direction the wind speed is calculated
+
+options:
+  -h, --help            show this help message and exit
+  -wm {GFS,HRRR,IFS,RAP,ERA5}, --weather-model {GFS,HRRR,IFS,RAP,ERA5}
+                        weather model (default: GFS)
+  -e, --epoch           specify if datetime is in epoch format (default: False)
+  -nd, --no-download    test out the parameters without downloading data (default: False)
+  -c {model,forecast,forecast-only}, --cycle {model,forecast,forecast-only}
+                        the model or forecast cycle type to download the data (default: model)
+  -lf filename, --local-filename filename
+                        name of the local file to read instead of downloading from remote server
+                        (default: None)
+  -out out_dir, --output-directory out_dir
+                        specify full path directory to save output files (default:
+                        C:\Users\myuser\apbuilder\output)
+  -data data_dir, --data-directory data_dir
+                        specify full path directory to save the weather models data files (default:
+                        C:\Users\myuser\apbuilder\data)
+  -pof prefix, --prefix-output-file prefix
+                        Prefix for the output binary files (default: None)
+  -clim min max         min and max values for sound speed profile plots (default: [0, 0])
+  -dlim min max         min and max values for density profile plots (default: [0, 0])
+  -wlim min max         min and max values for wind profile plots (default: [0, 0])
+</code></pre>
+<pre><code class="language-bash">$ apbuilder build2d --help
+usage: apbuilder build2d [-h] [-wm {GFS,HRRR,IFS,RAP,ERA5}] [-e] [-nd]
+                         [-c {model,forecast,forecast-only}] [-lf filename] [-out out_dir]
+                         [-data data_dir] [-pof prefix] [-clim min max] [-dlim min max]
+                         [-wlim min max]
+                         datetime [-90, 90] [-180, 360] [-90, 90] [-180, 360] [[0, 360]] [[0,]]
+
+positional arguments:
+  datetime              date of data in ISO 8601 or epoch format
+  [-90, 90]             latitude of the starting point of the 2D section
+  [-180, 360]           longitude of the starting point of the 2D section
+  [-90, 90]             latitude of the end point of the 2D section
+  [-180, 360]           longitude of the end point of the 2D section
+  [0, 360]              horizontal resolution of 2D slice in degree (default: 0)
+  [0, ]                 vertical resolution of 2D slice in meter (default: 100)
+
+options:
+  -h, --help            show this help message and exit
+  -wm {GFS,HRRR,IFS,RAP,ERA5}, --weather-model {GFS,HRRR,IFS,RAP,ERA5}
+                        weather model (default: GFS)
+  -e, --epoch           specify if datetime is in epoch format (default: False)
+  -nd, --no-download    test out the parameters without downloading data (default: False)
+  -c {model,forecast,forecast-only}, --cycle {model,forecast,forecast-only}
+                        the model or forecast cycle type to download the data (default: model)
+  -lf filename, --local-filename filename
+                        name of the local file to read instead of downloading from remote server
+                        (default: None)
+  -out out_dir, --output-directory out_dir
+                        specify full path directory to save output files (default:
+                        C:\Users\myuser\apbuilder\output)
+  -data data_dir, --data-directory data_dir
+                        specify full path directory to save the weather models data files (default:
+                        C:\Users\myuser\apbuilder\data)
+  -pof prefix, --prefix-output-file prefix
+                        Prefix for the output binary files (default: None)
+  -clim min max         min and max values for sound speed profile plots (default: [0, 0])
+  -dlim min max         min and max values for density profile plots (default: [0, 0])
+  -wlim min max         min and max values for wind profile plots (default: [0, 0])
+</code></pre>
+<pre><code class="language-bash">$ apbuilder info --help
+usage: apbuilder info [-h] [-sb COLUMN_NAME] [-ro] (-mi | -gmt | -sc)
+
+options:
+  -h, --help            show this help message and exit
+  -sb COLUMN_NAME, --sort-by COLUMN_NAME
+                        column name to sort the available weather models table. Allowed values:
+                        {Model, Grid (Deg), Time Period, Model Cycle, Forecast Cycle, Geographic
+                        Extent} (default: Model)
+  -ro, --reverse-order  Reverse the sorting order of the available weather models table (default:
+                        False)
+
+exclusive options:
+  -mi, --models-info    print information about the available weather models
+  -gmt, --gmt-info      print information about GMT
+  -sc, --selfcheck      check the installation of the tool and dependencies
+</code></pre></section><section class="print-page" id="how-it-works" heading-number="4"><h1 id="how-it-works-how-it-works">How it works?<a class="headerlink" href="#how-it-works-how-it-works" title="Permanent link">#</a></h1>
+<p>APBuilder uses <code>herbie-data</code> to download grib and inventory files from remote
+servers. APBuilder also supports reading local grib files without an inventory
+file. This application will check if the grib file exists locally, if not it
+will download it from a remote server. Then process the file accordingly. The
+next time you run this application with the datetime and weather model, it
+will use the local copy of the file, saving time as there is no need to
+download the file. You can also specify a local grib filename to use instead of
+downloading from a remote server.</p>
+<p>Then APBuilder will generate the atmospheric profile files to be used in AC2Dr.
+In addition, it generates images to visualize the data. The output is saved to
+the default location or the directory specified by the user with the <code>-out</code> parameter.</p>
+<h2 id="how-it-works-directory-structure">Directory Structure<a class="headerlink" href="#how-it-works-directory-structure" title="Permanent link">#</a></h2>
+<p>APBuilder uses a directory structure created by <code>herbie-data</code>, which is the following:</p>
+<ul>
+<li><code>out_dir</code> is the output directory set by the user in the command</li>
+<li><code>weather_model</code> is the weather model set by the user in the command, or default if not set</li>
+<li><code>yyyymmdd</code> is the date of the files to search set by the user in the command</li>
+<li><code>filename</code> is the filename of the grib2 file. This filename has a defined structure, see more info below.</li>
+</ul>
+<pre><code class="language-text">|-- out_dir
+|   |-- weather_model
+|       |-- yyyymmdd
+|           |-- filename
+</code></pre>
+<p>Here is a concrete example.</p>
+<pre><code class="language-text">|-- data
+|   |-- gfs
+|       |-- 20201029
+|           |-- gfs_4_20201029_0000_000.grb2
+</code></pre>
+<h2 id="how-it-works-adding-local-files-manually">Adding local files manually<a class="headerlink" href="#how-it-works-adding-local-files-manually" title="Permanent link">#</a></h2>
+<p>You can use a local grib file instead of downloading from a remote server.
+The file must be placed inside a specific folder as denoted above on the <code>Directory Structure</code> section.</p>
+<p>To use the local file with APBuilder, make sure to specify the <code>-lf</code> or <code>--local-filename</code> flag with
+the full path to the file.</p>
+<p>For example:</p>
+<pre><code class="language-bash">apbuilder build1d 20200804T00:00:00 50.6565 6.8033 53.2534 8.68980 \
+    C:\\Users\\myuser\\apbuilder\\data \
+    -lf C:\\Users\\myuser\\apbuilder\\data\\ifs\\20200804\\ECMWF_ERA5_20200804_1200.grib \
+    -wm ERA5
+</code></pre></section><section class="print-page" id="about" heading-number="5"><h1 id="about-atmospheric-profile-builder-apbuilder">Atmospheric Profile Builder (APBuilder)<a class="headerlink" href="#about-atmospheric-profile-builder-apbuilder" title="Permanent link">#</a></h1>
+<p>The APBuilder is a tool to create <a href="https://github.com/LLNL/AC2Dr">AC2Dr</a> atmosphere profiles by
+downloading a weather model and making transformations to generate the 1D or 2D binary profile.
+The binary profile is used as an input to AC2Dr.</p>
+<p>AC2Dr is a 2-D numerical solver for the acoustic wave equation using the finite difference method.</p>
+<h2 id="about-license">License<a class="headerlink" href="#about-license" title="Permanent link">#</a></h2>
+<p>See LICENSE and NOTICE files for details.</p>
+<pre><code class="language-text">LLNL-CODE-2012226
+</code></pre></section><section class="print-page" id="faqs" heading-number="6"><h1 id="faqs-frequently-asked-questions-faq">Frequently Asked Questions (FAQ)<a class="headerlink" href="#faqs-frequently-asked-questions-faq" title="Permanent link">#</a></h1>
+<h2 id="faqs-what-is-volume-mapping-in-containers">What is Volume Mapping in Containers?<a class="headerlink" href="#faqs-what-is-volume-mapping-in-containers" title="Permanent link">#</a></h2>
+<p>Volume mapping allows you to link a directory or file from your host machine (the <code>source</code>) to a
+directory inside a container (the <code>target</code>). This makes it possible for the container to read
+and write files that are stored on your local filesystem. Any changes made by the container in
+the mapped (<code>target</code>) directory are immediately reflected on your host (<code>source</code>), and vice versa.
+This is useful for sharing data, saving output, or persisting files even after the container stops.
+Here is example volume mapping:</p>
+<pre><code class="language-yaml">services:
+  apbuilder:
+    volumes:
+      - type: bind
+        source: /tmp/apbuilder/data
+        target: /home/apbuilder/apbuilder/data
+</code></pre>
+<h2 id="faqs-the-data-is-not-saved-to-the-specified-output-directory-when-using-the-container">The data is not saved to the specified output directory when using the container<a class="headerlink" href="#faqs-the-data-is-not-saved-to-the-specified-output-directory-when-using-the-container" title="Permanent link">#</a></h2>
+<p>When using the container image, you must specify in <code>volume-overrides.yaml</code> the <code>source</code> (a path
+on your local machine) that will be mapped to the <code>target</code> (the path inside the container).
+The output data is saved to the <code>target</code> directory as seen by the container. However, because
+of the volume mapping, any data written to the <code>target</code> directory inside the container is actually
+stored in your <code>source</code> directory on your local filesystem.  </p>
+<p>Therefore, the <code>-out</code> directory must be the absolute path <strong>inside the container</strong> (the <code>target</code>
+path), not the host (<code>source</code>) path. For example, consider the following <code>volume-overrides.yaml</code>:</p>
+<pre><code class="language-yaml">services:
+  apbuilder:
+    volumes:
+      - type: bind
+        source: /tmp/apbuilder/data
+        target: /home/apbuilder/apbuilder/data
+</code></pre>
+<p>If you want the output data to be accessible on your local machine at
+<code>/tmp/apbuilder/data/myanalysis</code>, you should set the <code>-out</code> parameter to
+<code>/home/apbuilder/apbuilder/data/myanalysis</code> (the <code>target</code> path inside the container).
+The container will write to this directory, and the data will appear in
+<code>/tmp/apbuilder/data/myanalysis</code> on your host machine.</p>
+<hr />
+<h3 id="faqs-table-summary">Table Summary<a class="headerlink" href="#faqs-table-summary" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value inside container</th>
+<th>Value on host machine</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-out</code> argument</td>
+<td><code>/home/apbuilder/apbuilder/data/myanalysis</code></td>
+<td><code>/tmp/apbuilder/data/myanalysis</code></td>
+</tr>
+<tr>
+<td>Data physically stored</td>
+<td><code>/home/apbuilder/apbuilder/data/myanalysis</code> (container)</td>
+<td><code>/tmp/apbuilder/data/myanalysis</code> (host)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>In summary:</strong><br />
+Always use the <code>target</code> (container path) for the <code>-out</code> parameter. The data will be available on
+your host in the <code>source</code> directory you mapped.</p>
+<h2 id="faqs-using-windows-git-bash-is-modifying-my-output-directory-when-using-the-container">Using Windows Git Bash is modifying my output directory when using the container<a class="headerlink" href="#faqs-using-windows-git-bash-is-modifying-my-output-directory-when-using-the-container" title="Permanent link">#</a></h2>
+<p>The specified <code>-out</code> directory can be automatically modified when using Git Bash for Windows to
+run the container. This is because Git Bash tries to "translate" Unix-style paths (like /home/...)
+to Windows-style paths (C:/Program Files/Git/home/...). When you run a command that includes a
+path starting with <code>/</code>, Git Bash assumes you mean a Windows absolute path, and prepends the Git
+installation directory if it can't resolve the path. Using <code>//</code> at the start (double slash) can
+prevent Git Bash from translating the path:</p>
+<pre><code class="language-bash">-out //home/apbuilder/apbuilder/data/raul-data
+</code></pre>
+<h2 id="faqs-getting-ssl-errors-when-downloading-data">Getting SSL errors when downloading data<a class="headerlink" href="#faqs-getting-ssl-errors-when-downloading-data" title="Permanent link">#</a></h2>
+<p>If you are connected to VPN and having SSL errors, you will have to configure an environment
+variable with the SSL certificate.</p>
+<p>Here is an example to configure on Linux. Use the defined approach for your OS to set the
+environment variable accordingly.</p>
+<pre><code class="language-bash">export REQUESTS_CA_BUNDLE=/path/to/cacert.pem
+</code></pre></section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
+
+                .print-site-enumerate-headings #index h2:before { content: '1.' counter(counter-index-2) ' ' }
+                .print-site-enumerate-headings #index h2 {  counter-reset: counter-index-3  counter-index-4  counter-index-5  counter-index-6 ;  counter-increment: counter-index-2 }
+            
+                .print-site-enumerate-headings #index h3:before { content: '1.' counter(counter-index-2) '.' counter(counter-index-3) ' ' }
+                .print-site-enumerate-headings #index h3 {  counter-reset: counter-index-4  counter-index-5  counter-index-6 ;  counter-increment: counter-index-3 }
+            
+                .print-site-enumerate-headings #index h4:before { content: '1.' counter(counter-index-2) '.' counter(counter-index-3) '.' counter(counter-index-4) ' ' }
+                .print-site-enumerate-headings #index h4 {  counter-reset: counter-index-5  counter-index-6 ;  counter-increment: counter-index-4 }
+            
+                .print-site-enumerate-headings #index h5:before { content: '1.' counter(counter-index-2) '.' counter(counter-index-3) '.' counter(counter-index-4) '.' counter(counter-index-5) ' ' }
+                .print-site-enumerate-headings #index h5 {  counter-reset: counter-index-6 ;  counter-increment: counter-index-5 }
+            
+                .print-site-enumerate-headings #index h6:before { content: '1.' counter(counter-index-2) '.' counter(counter-index-3) '.' counter(counter-index-4) '.' counter(counter-index-5) '.' counter(counter-index-6) ' ' }
+                .print-site-enumerate-headings #index h6 {  counter-increment: counter-index-6 }
+            
+.print-site-enumerate-headings #install > h1:before { content: '2 ' }
+
+                .print-site-enumerate-headings #install h2:before { content: '2.' counter(counter-install-2) ' ' }
+                .print-site-enumerate-headings #install h2 {  counter-reset: counter-install-3  counter-install-4  counter-install-5  counter-install-6 ;  counter-increment: counter-install-2 }
+            
+                .print-site-enumerate-headings #install h3:before { content: '2.' counter(counter-install-2) '.' counter(counter-install-3) ' ' }
+                .print-site-enumerate-headings #install h3 {  counter-reset: counter-install-4  counter-install-5  counter-install-6 ;  counter-increment: counter-install-3 }
+            
+                .print-site-enumerate-headings #install h4:before { content: '2.' counter(counter-install-2) '.' counter(counter-install-3) '.' counter(counter-install-4) ' ' }
+                .print-site-enumerate-headings #install h4 {  counter-reset: counter-install-5  counter-install-6 ;  counter-increment: counter-install-4 }
+            
+                .print-site-enumerate-headings #install h5:before { content: '2.' counter(counter-install-2) '.' counter(counter-install-3) '.' counter(counter-install-4) '.' counter(counter-install-5) ' ' }
+                .print-site-enumerate-headings #install h5 {  counter-reset: counter-install-6 ;  counter-increment: counter-install-5 }
+            
+                .print-site-enumerate-headings #install h6:before { content: '2.' counter(counter-install-2) '.' counter(counter-install-3) '.' counter(counter-install-4) '.' counter(counter-install-5) '.' counter(counter-install-6) ' ' }
+                .print-site-enumerate-headings #install h6 {  counter-increment: counter-install-6 }
+            
+.print-site-enumerate-headings #usage > h1:before { content: '3 ' }
+
+                .print-site-enumerate-headings #usage h2:before { content: '3.' counter(counter-usage-2) ' ' }
+                .print-site-enumerate-headings #usage h2 {  counter-reset: counter-usage-3  counter-usage-4  counter-usage-5  counter-usage-6 ;  counter-increment: counter-usage-2 }
+            
+                .print-site-enumerate-headings #usage h3:before { content: '3.' counter(counter-usage-2) '.' counter(counter-usage-3) ' ' }
+                .print-site-enumerate-headings #usage h3 {  counter-reset: counter-usage-4  counter-usage-5  counter-usage-6 ;  counter-increment: counter-usage-3 }
+            
+                .print-site-enumerate-headings #usage h4:before { content: '3.' counter(counter-usage-2) '.' counter(counter-usage-3) '.' counter(counter-usage-4) ' ' }
+                .print-site-enumerate-headings #usage h4 {  counter-reset: counter-usage-5  counter-usage-6 ;  counter-increment: counter-usage-4 }
+            
+                .print-site-enumerate-headings #usage h5:before { content: '3.' counter(counter-usage-2) '.' counter(counter-usage-3) '.' counter(counter-usage-4) '.' counter(counter-usage-5) ' ' }
+                .print-site-enumerate-headings #usage h5 {  counter-reset: counter-usage-6 ;  counter-increment: counter-usage-5 }
+            
+                .print-site-enumerate-headings #usage h6:before { content: '3.' counter(counter-usage-2) '.' counter(counter-usage-3) '.' counter(counter-usage-4) '.' counter(counter-usage-5) '.' counter(counter-usage-6) ' ' }
+                .print-site-enumerate-headings #usage h6 {  counter-increment: counter-usage-6 }
+            
+.print-site-enumerate-headings #how-it-works > h1:before { content: '4 ' }
+
+                .print-site-enumerate-headings #how-it-works h2:before { content: '4.' counter(counter-how-it-works-2) ' ' }
+                .print-site-enumerate-headings #how-it-works h2 {  counter-reset: counter-how-it-works-3  counter-how-it-works-4  counter-how-it-works-5  counter-how-it-works-6 ;  counter-increment: counter-how-it-works-2 }
+            
+                .print-site-enumerate-headings #how-it-works h3:before { content: '4.' counter(counter-how-it-works-2) '.' counter(counter-how-it-works-3) ' ' }
+                .print-site-enumerate-headings #how-it-works h3 {  counter-reset: counter-how-it-works-4  counter-how-it-works-5  counter-how-it-works-6 ;  counter-increment: counter-how-it-works-3 }
+            
+                .print-site-enumerate-headings #how-it-works h4:before { content: '4.' counter(counter-how-it-works-2) '.' counter(counter-how-it-works-3) '.' counter(counter-how-it-works-4) ' ' }
+                .print-site-enumerate-headings #how-it-works h4 {  counter-reset: counter-how-it-works-5  counter-how-it-works-6 ;  counter-increment: counter-how-it-works-4 }
+            
+                .print-site-enumerate-headings #how-it-works h5:before { content: '4.' counter(counter-how-it-works-2) '.' counter(counter-how-it-works-3) '.' counter(counter-how-it-works-4) '.' counter(counter-how-it-works-5) ' ' }
+                .print-site-enumerate-headings #how-it-works h5 {  counter-reset: counter-how-it-works-6 ;  counter-increment: counter-how-it-works-5 }
+            
+                .print-site-enumerate-headings #how-it-works h6:before { content: '4.' counter(counter-how-it-works-2) '.' counter(counter-how-it-works-3) '.' counter(counter-how-it-works-4) '.' counter(counter-how-it-works-5) '.' counter(counter-how-it-works-6) ' ' }
+                .print-site-enumerate-headings #how-it-works h6 {  counter-increment: counter-how-it-works-6 }
+            
+.print-site-enumerate-headings #about > h1:before { content: '5 ' }
+
+                .print-site-enumerate-headings #about h2:before { content: '5.' counter(counter-about-2) ' ' }
+                .print-site-enumerate-headings #about h2 {  counter-reset: counter-about-3  counter-about-4  counter-about-5  counter-about-6 ;  counter-increment: counter-about-2 }
+            
+                .print-site-enumerate-headings #about h3:before { content: '5.' counter(counter-about-2) '.' counter(counter-about-3) ' ' }
+                .print-site-enumerate-headings #about h3 {  counter-reset: counter-about-4  counter-about-5  counter-about-6 ;  counter-increment: counter-about-3 }
+            
+                .print-site-enumerate-headings #about h4:before { content: '5.' counter(counter-about-2) '.' counter(counter-about-3) '.' counter(counter-about-4) ' ' }
+                .print-site-enumerate-headings #about h4 {  counter-reset: counter-about-5  counter-about-6 ;  counter-increment: counter-about-4 }
+            
+                .print-site-enumerate-headings #about h5:before { content: '5.' counter(counter-about-2) '.' counter(counter-about-3) '.' counter(counter-about-4) '.' counter(counter-about-5) ' ' }
+                .print-site-enumerate-headings #about h5 {  counter-reset: counter-about-6 ;  counter-increment: counter-about-5 }
+            
+                .print-site-enumerate-headings #about h6:before { content: '5.' counter(counter-about-2) '.' counter(counter-about-3) '.' counter(counter-about-4) '.' counter(counter-about-5) '.' counter(counter-about-6) ' ' }
+                .print-site-enumerate-headings #about h6 {  counter-increment: counter-about-6 }
+            
+.print-site-enumerate-headings #faqs > h1:before { content: '6 ' }
+
+                .print-site-enumerate-headings #faqs h2:before { content: '6.' counter(counter-faqs-2) ' ' }
+                .print-site-enumerate-headings #faqs h2 {  counter-reset: counter-faqs-3  counter-faqs-4  counter-faqs-5  counter-faqs-6 ;  counter-increment: counter-faqs-2 }
+            
+                .print-site-enumerate-headings #faqs h3:before { content: '6.' counter(counter-faqs-2) '.' counter(counter-faqs-3) ' ' }
+                .print-site-enumerate-headings #faqs h3 {  counter-reset: counter-faqs-4  counter-faqs-5  counter-faqs-6 ;  counter-increment: counter-faqs-3 }
+            
+                .print-site-enumerate-headings #faqs h4:before { content: '6.' counter(counter-faqs-2) '.' counter(counter-faqs-3) '.' counter(counter-faqs-4) ' ' }
+                .print-site-enumerate-headings #faqs h4 {  counter-reset: counter-faqs-5  counter-faqs-6 ;  counter-increment: counter-faqs-4 }
+            
+                .print-site-enumerate-headings #faqs h5:before { content: '6.' counter(counter-faqs-2) '.' counter(counter-faqs-3) '.' counter(counter-faqs-4) '.' counter(counter-faqs-5) ' ' }
+                .print-site-enumerate-headings #faqs h5 {  counter-reset: counter-faqs-6 ;  counter-increment: counter-faqs-5 }
+            
+                .print-site-enumerate-headings #faqs h6:before { content: '6.' counter(counter-faqs-2) '.' counter(counter-faqs-3) '.' counter(counter-faqs-4) '.' counter(counter-faqs-5) '.' counter(counter-faqs-6) ' ' }
+                .print-site-enumerate-headings #faqs h6 {  counter-increment: counter-faqs-6 }
+            </style></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "/",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../js/print-site.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
