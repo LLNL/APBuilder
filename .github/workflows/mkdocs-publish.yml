@@ -4,8 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - "**"
-      #- ${{ github.event.repository.default_branch }}
+      - ${{ github.event.repository.default_branch }}
 
 jobs:
   publish-mkdocs:
