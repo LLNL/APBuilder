@@ -15,7 +15,7 @@ authors = [
 license-files = ["LICEN[CS]E*"]
 
 classifiers = [
-  "Development Status :: 4 - Beta",
+  "Development Status :: 5 - Production/Stable",
   "Environment :: Console",
   "Intended Audience :: Science/Research",
   "Operating System :: MacOS :: MacOS X",
@@ -69,9 +69,10 @@ test = [
 apbuilder = "apbuilder.main:run_apb"
 
 [project.urls]
-Changelog = "https://github.com/llnl/apbuilder/releases"
-Homepage = "https://github.com/llnl/apbuilder"
+Changelog = "https://github.com/llnl/apbuilder/blob/main/CHANGELOG.md"
 Documentation = "https://software.llnl.gov/APBuilder/"
+Homepage = "https://github.com/llnl/apbuilder"
+Releases = "https://github.com/llnl/apbuilder/releases"
 Repository = "https://github.com/llnl/apbuilder"
 
 [tool.setuptools.packages.find]

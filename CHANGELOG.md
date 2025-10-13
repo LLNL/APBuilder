@@ -1,15 +1,7 @@
 # Atmospheric Profile Builder (APBuilder)
 
-## \[Unreleased\] - yyyy-mm-dd
+## 1.0.0 - 2025-10-13
 
 ### Added
 
-### Changed
-
-### Deprecated
-
-### Fixed
-
-### Removed
-
-### Security
+- Initial version

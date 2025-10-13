@@ -65,7 +65,6 @@ Download the docker compose and volume override files.
 In the `volume-overrides.yaml` change the following:
 
 1. `<data-source>` to the full root path of where you want to store the data. A `data` and `output` directory will be automatically created in this root path.
-1. `<cacert-source>` to the full path where your ca-certificate PEM file is located to allow SSL.
 
 ### Verify
 
@@ -75,7 +74,7 @@ NOTE: The first time it will take a little while because it will download the co
 
 ```bash
 docker compose \
-  -f apbuilder-local-docker-compose.yaml \
+  -f apbuilder-docker-compose.yaml \
   -f volume-overrides.yaml run \
   --rm apbuilder
 ```
@@ -86,7 +85,7 @@ You can run with docker compose using the following command:
 
 ```bash
 docker compose \
-  -f apbuilder-local-docker-compose.yaml \
+  -f apbuilder-docker-compose.yaml \
   -f volume-overrides.yaml run \
   --rm apbuilder \
   apbuilder info --selfcheck
@@ -101,7 +100,7 @@ The following prefix is always needed to run apbuilder with docker compose.
 
 ```bash
 docker compose \
-  -f apbuilder-local-docker-compose.yaml \
+  -f apbuilder-docker-compose.yaml \
   -f volume-overrides.yaml \
   run --rm apbuilder
 ```
@@ -111,7 +110,7 @@ It is recommended to to create an alias to simplify usage:
 ```bash
 alias apbuilder='
   docker compose \
-  -f apbuilder-local-docker-compose.yaml \
+  -f apbuilder-docker-compose.yaml \
   -f volume-overrides.yaml \
   run --rm apbuilder apbuilder'
 ```

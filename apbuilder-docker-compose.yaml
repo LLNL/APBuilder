@@ -1,14 +1,11 @@
 services:
   apbuilder: 
-    image: llnl/apbuilder:latest
+    image: ghcr.io/llnl/apbuilder:1.0.0
     restart: "no"
     volumes:
       - type: bind
         source: <data-source>
         target: /home/apbuilder/apbuilder
-      - type: bind
-        source: <cacert-source>
-        target: /home/apbuilder/cacert.pem
     labels:
       gov.llnl.description: "Atmospheric Profile Builder (APBuilder)"
       gov.llnl.program: "GMP"
