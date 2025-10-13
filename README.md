@@ -13,7 +13,7 @@ the documentation.
 ## More Info
 
 For more information, please check the `docs` directory or visit the
-following [documentation page.](https://software.llnl.gov/APBuilder)
+following [documentation page.](https://software.llnl.gov/APBuilder/)
 
 ## License
 
