@@ -69,10 +69,10 @@ test = [
 apbuilder = "apbuilder.main:run_apb"
 
 [project.urls]
-changelog = "https://github.com/llnl/apbuilder"
-homepage = "https://github.com/llnl/apbuilder"
-documentation = "https://github.com/llnl/apbuilder"
-repository = "https://github.com/llnl/apbuilder"
+Changelog = "https://github.com/llnl/apbuilder/releases"
+Homepage = "https://github.com/llnl/apbuilder"
+Documentation = "https://software.llnl.gov/APBuilder/"
+Repository = "https://github.com/llnl/apbuilder"
 
 [tool.setuptools.packages.find]
 where = ["src", "config" ]
