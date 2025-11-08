@@ -49,7 +49,7 @@ RUN echo ${VENV_NAME}
 RUN conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main && \
     conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r && \
     conda create -y -n ${VENV_NAME} python=${PYTHON_VERSION} \ 
-    'pygmt=0.12' \
+    'pygmt=0.17' \
     'libgdal-grib' \
     'libgdal-netcdf' \
     -c conda-forge && \
