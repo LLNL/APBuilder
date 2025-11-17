@@ -24,7 +24,7 @@ conda activate apbuilder
 Before installing the tool, `PyGMT` must be install in the system.
 
 ````bash
-conda install -y -c conda-forge 'pygmt=0.12' libgdal-grib libgdal-netcdf
+conda install -y -c conda-forge 'pygmt=0.17' libgdal-grib libgdal-netcdf
 ````
 
 ### Installation

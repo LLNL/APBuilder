@@ -555,6 +555,7 @@ def get_filtered_data_from_source(weather_model: str, filename: str) -> xarray.D
     kwargs = {
         "engine": "cfgrib",
         "decode_timedelta": True,
+        "indexpath": "{path}.idx",
         "backend_kwargs": {
             "filter_by_keys": {"cfVarName": "u", "typeOfLevel": "isobaricInhPa"}
         },
@@ -563,6 +564,7 @@ def get_filtered_data_from_source(weather_model: str, filename: str) -> xarray.D
     kwargs_InPa = {
         "engine": "cfgrib",
         "decode_timedelta": True,
+        "indexpath": "{path}.idx",
         "backend_kwargs": {
             "filter_by_keys": {"cfVarName": "u", "typeOfLevel": "isobaricInPa"}
         },
