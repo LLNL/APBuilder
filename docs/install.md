@@ -7,24 +7,24 @@ If you are looking to upgrade apbuilder, you can skip to the [Upgrade](#upgrade)
 
 There are 2 ways to install the application.
 
-1. [Native install](#native-install) using conda
+1. [Native install](#native-install) using mamba
 1. [Container install](#container-install)
 
 ## Native Install
 
 ### Pre-requisites
 
-Create conda virtual environment
+Create mamba virtual environment
 
 ````bash
-conda create -y --name apbuilder python=3.11
-conda activate apbuilder
+mamba create -y --name apbuilder python=3.11
+mamba activate apbuilder
 ````
 
 Before installing the tool, `PyGMT` must be install in the system.
 
 ````bash
-conda install -y -c conda-forge 'pygmt=0.17' libgdal-grib libgdal-netcdf
+mamba install -y -c conda-forge 'pygmt=0.17' libgdal-grib libgdal-netcdf
 ````
 
 ### Installation

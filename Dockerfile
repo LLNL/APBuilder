@@ -2,6 +2,7 @@ ARG BASE_REGISTRY=ghcr.io
 ARG BASE_IMAGE=llnl/apbuilder/ironbank/redhat/ubi8
 ARG BASE_TAG=8.10
 ARG PYTHON_VERSION=3.12
+ARG MICROMAMBA_VERSION=2.3.3-0
 
 FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG} AS builder
 # re-declare and auto inherit the value set earlier for PYTHON_VERSION
@@ -24,45 +25,35 @@ FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG}
 ARG USER=apbuilder
 # re-declare and auto inherit the value set earlier for PYTHON_VERSION
 ARG PYTHON_VERSION
+ARG MICROMAMBA_VERSION
 
 # Create user to avoid using root
 RUN groupadd -g 1002 ${USER} && \
     useradd -r -m -u 1002 -g ${USER} ${USER}
 
-# Install miniconda
-RUN yum -y install wget && \
-    mkdir -p ~/miniconda3 && \
-    wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh && \
-    bash ~/miniconda3/miniconda.sh -b -u -p /opt/conda && \
-    rm ~/miniconda3/miniconda.sh && \
-    source /opt/conda/bin/activate && \
-    conda init --all && \
-    yum -y remove wget && \
-    conda --version
+# Install and configure micromamba
+RUN curl -Ls https://github.com/mamba-org/micromamba-releases/releases/download/${MICROMAMBA_VERSION}/micromamba-linux-64 \
+    -o /usr/local/bin/micromamba && \
+    chmod +x /usr/local/bin/micromamba && \
+    micromamba --version
 
 USER ${USER}
-ENV PATH=/opt/conda/bin:$PATH
 ENV VENV_NAME=apbuilder-venv
 
-# Create conda environment with dependencies
+# Create environment with dependencies
 RUN echo ${VENV_NAME}
-RUN conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main && \
-    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r && \
-    conda create -y -n ${VENV_NAME} python=${PYTHON_VERSION} \ 
+RUN micromamba create -y -n ${VENV_NAME} python=${PYTHON_VERSION} \ 
     'pygmt=0.17' \
     'libgdal-grib' \
     'libgdal-netcdf' \
     -c conda-forge && \
-    conda clean -yaf && \
-    conda init --all && \
-    source /opt/conda/bin/activate && \
-    conda activate ${VENV_NAME}
+    micromamba clean -yaf
 
 # Make RUN commands using the new environment:
 # Unfortunately, SHELL command does not support use of ARG variables, 
 # hence the name of the virtual environment is hardcoded here. 
-# It must be the same value as argumenta VENV_NAME defined at the top of this file.
-SHELL ["/opt/conda/bin/conda", "run", "-n", "apbuilder-venv", "/bin/bash", "-c"]
+# It must be the same value as argument VENV_NAME defined at the top.
+SHELL ["micromamba", "run", "-n", "apbuilder-venv", "/bin/bash", "-c"]
 
 COPY --from=builder --chown=${USER}:${USER} /build/dist/ /home/${USER}/dist
 
@@ -76,7 +67,7 @@ RUN mkdir -p logs && touch logs/.ignore
 # Unfortunately, ENTRYPOINT command does not support use of ARG or ENV variables directly,
 # hence the name of the virtual environment is hardcoded here. 
 # It must be the same value as argumenta VENV_NAME defined at the top of this file.
-ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "apbuilder-venv"]
+ENTRYPOINT ["micromamba", "run", "-n", "apbuilder-venv"]
 CMD ["apbuilder", "-h"]
 
 ARG VERSION
